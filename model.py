@@ -1,3 +1,4 @@
+# This file contains the code that is used to create an instance of the ChatGroq class, which is used to interact with a GROQ-based language model.
 from langchain_groq import ChatGroq
 def create_chat_groq():
         """

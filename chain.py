@@ -1,6 +1,7 @@
+# Description: This file contains the function that generates an 8-line poem by invoking a GROQ-based language model.
+import prompt
 from model import create_chat_groq
-import prompts
-def generate_poem(topic):
+def poem(topic_str):
     """
     This function generates an 8-line poem by invoking a GROQ-based language model.
     
@@ -12,8 +13,10 @@ def generate_poem(topic):
     Returns:
         str: The content of the generated poem returned by the model.
     """
-    prompt_template = prompts.poem_generator_prompt_from_hub()
+    prompt_temp=prompt.poem_generator_prompt_from_hub()
+
     llm= create_chat_groq()
-    chain = prompt_template | llm
-    response = chain.invoke({"topic": topic})
+
+    chain = prompt_temp| llm
+    response = chain.invoke({"question":topic_str})
     return response.content
